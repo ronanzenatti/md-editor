@@ -1,0 +1,206 @@
+export const translations = {
+  'pt-BR': {
+    // App header
+    'title': 'MD-Editor',
+    'repository': 'Repositório',
+    'editor': 'Editor',
+    'preview': 'Visualização',
+    'close_workspace': 'Fechar Repositório',
+
+    // Workspace selector
+    'select_folder': 'Clonar Repositório Git para Iniciar',
+    'select_folder_title': 'Selecione uma pasta para trabalhar',
+    'select_folder_pc': 'Selecionar Pasta do Computador',
+    'running_desktop': 'Executando em Modo Desktop (Electron)',
+    'git_warning': 'Para usar a versão web, você deve clonar um repositório Git. As alterações salvas poderão ser sincronizadas de volta ao repositório remoto.',
+    'repo_url': 'URL do Repositório Git (HTTPS)',
+    'branch': 'Branch (opcional, ex: main)',
+    'git_token': 'Token de Acesso / Senha (opcional)',
+    'clone_btn': 'Clonar e Abrir Repositório',
+    'cloning': 'Clonando repositório remoto...',
+    'repo_url_placeholder': 'https://github.com/usuario/repositorio.git',
+    'token_placeholder': 'Digite seu Personal Access Token...',
+    'sync_repo': 'Sincronizar (Push / Pull)',
+    'syncing': 'Sincronizando...',
+    'sync_success': 'Repositório sincronizado com sucesso!',
+
+    // Repo Manager
+    'repo_manager': 'Gestor de Repositórios',
+    'not_versioned': 'Não versionado',
+    'clean_repo': 'Repositório limpo',
+    'modified_files': 'arquivos modificados',
+    'create_file_root': 'Criar Arquivo no Raiz',
+    'create_folder_root': 'Criar Pasta no Raiz',
+    'refresh': 'Atualizar Arquivos',
+    'empty_workspace': 'O repositório está vazio. Crie um arquivo para iniciar!',
+    'new_file': 'Novo Arquivo',
+    'new_folder': 'Nova Pasta',
+    'rename': 'Renomear',
+    'delete': 'Excluir',
+    'confirm_delete': 'Tem certeza que deseja excluir o item {name}?',
+
+    // Editor Pane
+    'select_file_prompt': 'Selecione ou crie um arquivo Markdown no Gestor de Repositórios.',
+    'autosaved': 'Salvo automaticamente',
+    'saving': 'Salvando...',
+    'unsaved_changes': 'Alterações não salvas (salvando em 5s)',
+    'force_save': 'Salvar',
+    'save_shortcut': 'Atalho: CTRL+S',
+    'autosave_toggle': 'Autosave Ativo',
+    'typing': 'Digitando...',
+
+    // Modals & Toolbar Buttons
+    'insert_image': 'Inserir Imagem',
+    'insert_video': 'Inserir Vídeo',
+    'enter_url': 'Digite o link da web ou código de embed:',
+    'or': 'OU',
+    'choose_local_image': 'Escolher Imagem Local',
+    'choose_local_video': 'Escolher Vídeo Local',
+    'insert': 'Inserir',
+    'uploading': 'Enviando...',
+    'cancel': 'Cancelar',
+    'close': 'Fechar',
+
+    // Link modal translations
+    'insert_link': 'Inserir Link',
+    'link_text': 'Texto do Link:',
+    'link_mode': 'Origem do Link:',
+    'link_mode_external': 'Link Externo (URL)',
+    'link_mode_repo': 'Arquivo do Repositório',
+    'link_mode_upload': 'Fazer Upload de Arquivo (pasta arquivos/)',
+    'link_file_select': 'Selecione um Arquivo do Repositório:',
+    'link_file_upload': 'Escolher Arquivo Local:',
+    'link_external_placeholder': 'https://exemplo.com',
+    'choose_file': 'Escolher Arquivo',
+    'uploading_file': 'Enviando arquivo...',
+
+    // Code block modal
+    'code_block': 'Bloco de Código',
+    'select_lang': 'Selecione a Linguagem',
+    'define_manually': 'Definir manualmente',
+    'lang_label': 'Linguagem (ex: javascript, python, etc):',
+
+    // Table modal
+    'insert_table': 'Criar Tabela Interativa',
+    'cols': 'Colunas',
+    'rows': 'Registros (Linhas)',
+    'add_col': 'Adicionar Coluna',
+    'add_row': 'Adicionar Registro',
+    'actions': 'Ações',
+    'edit_header': 'Editar Cabeçalho',
+
+    // Mermaid modal
+    'insert_mermaid': 'Inserir Diagrama Mermaid',
+    'select_mermaid_type': 'Selecione o Tipo de Diagrama',
+    'flowchart': 'Fluxograma (Flowchart)',
+    'sequence': 'Diagrama de Sequência (Sequence)',
+    'class_diag': 'Diagrama de Classe (Class)',
+    'state_diag': 'Diagrama de Estado (State)',
+    'er_diag': 'Diagrama Entidade-Relacionamento (ER)',
+    'gantt': 'Gráfico de Gantt',
+    'pie': 'Gráfico de Pizza (Pie Chart)',
+    'git_graph': 'Gráfico Git (Git Graph)'
+  },
+  'en': {
+    // App header
+    'title': 'MD-Editor',
+    'repository': 'Repository',
+    'editor': 'Editor',
+    'preview': 'Preview',
+    'close_workspace': 'Close Workspace',
+
+    // Workspace selector
+    'select_folder': 'Clone Git Repository to Start',
+    'select_folder_title': 'Select a folder workspace',
+    'select_folder_pc': 'Select Folder from PC',
+    'running_desktop': 'Running in Desktop (Electron) Mode',
+    'git_warning': 'To use the web version, you must clone a Git repository. Saved changes can be synchronized back to the remote repository.',
+    'repo_url': 'Git Repository URL (HTTPS)',
+    'branch': 'Branch (optional, e.g. main)',
+    'git_token': 'Access Token / Password (optional)',
+    'clone_btn': 'Clone & Open Repository',
+    'cloning': 'Cloning remote repository...',
+    'repo_url_placeholder': 'https://github.com/username/repository.git',
+    'token_placeholder': 'Enter your Personal Access Token...',
+    'sync_repo': 'Synchronize (Push / Pull)',
+    'syncing': 'Syncing...',
+    'sync_success': 'Repository synced successfully!',
+
+    // Repo Manager
+    'repo_manager': 'Repository Manager',
+    'not_versioned': 'Not versioned',
+    'clean_repo': 'Clean repository',
+    'modified_files': 'modified files',
+    'create_file_root': 'Create File at Root',
+    'create_folder_root': 'Create Folder at Root',
+    'refresh': 'Refresh Files',
+    'empty_workspace': 'Workspace is empty. Create a file to get started!',
+    'new_file': 'New File',
+    'new_folder': 'New Folder',
+    'rename': 'Rename',
+    'delete': 'Delete',
+    'confirm_delete': 'Are you sure you want to delete {name}?',
+
+    // Editor Pane
+    'select_file_prompt': 'Select or create a markdown file from the Repository Manager.',
+    'autosaved': 'Auto-saved',
+    'saving': 'Saving...',
+    'unsaved_changes': 'Unsaved changes (saving in 5s)',
+    'force_save': 'Save',
+    'save_shortcut': 'Shortcut: CTRL+S',
+    'autosave_toggle': 'Autosave Active',
+    'typing': 'Typing...',
+
+    // Modals & Toolbar Buttons
+    'insert_image': 'Insert Image',
+    'insert_video': 'Insert Video',
+    'enter_url': 'Enter web URL or video embed link:',
+    'or': 'OR',
+    'choose_local_image': 'Choose Local Image',
+    'choose_local_video': 'Choose Local Video',
+    'insert': 'Insert',
+    'uploading': 'Uploading...',
+    'cancel': 'Cancel',
+    'close': 'Close',
+
+    // Link modal translations
+    'insert_link': 'Insert Link',
+    'link_text': 'Link Text:',
+    'link_mode': 'Link Source:',
+    'link_mode_external': 'External Link (URL)',
+    'link_mode_repo': 'Repository File',
+    'link_mode_upload': 'Upload Local File (to arquivos/ folder)',
+    'link_file_select': 'Select a File from Repository:',
+    'link_file_upload': 'Select Local File:',
+    'link_external_placeholder': 'https://example.com',
+    'choose_file': 'Choose File',
+    'uploading_file': 'Uploading file...',
+
+    // Code block modal
+    'code_block': 'Code Block',
+    'select_lang': 'Select Language',
+    'define_manually': 'Define manually',
+    'lang_label': 'Language (e.g. javascript, python, etc):',
+
+    // Table modal
+    'insert_table': 'Create Interactive Table',
+    'cols': 'Columns',
+    'rows': 'Records (Rows)',
+    'add_col': 'Add Column',
+    'add_row': 'Add Record',
+    'actions': 'Actions',
+    'edit_header': 'Edit Header',
+
+    // Mermaid modal
+    'insert_mermaid': 'Insert Mermaid Diagram',
+    'select_mermaid_type': 'Select Diagram Type',
+    'flowchart': 'Flowchart',
+    'sequence': 'Sequence Diagram',
+    'class_diag': 'Class Diagram',
+    'state_diag': 'State Diagram',
+    'er_diag': 'Entity-Relationship Diagram (ER)',
+    'gantt': 'Gantt Chart',
+    'pie': 'Pie Chart',
+    'git_graph': 'Git Graph'
+  }
+};

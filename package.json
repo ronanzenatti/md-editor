@@ -1,0 +1,25 @@
+{
+  "name": "md-editor",
+  "version": "1.0.0",
+  "description": "A Markdown Editor with Git integration running on Electron and Web",
+  "main": "electron/main.js",
+  "type": "module",
+  "scripts": {
+    "start:server": "node server/server.js",
+    "start:electron": "electron .",
+    "dev:frontend": "npm --prefix frontend run dev",
+    "build:frontend": "npm --prefix frontend run build",
+    "install:all": "npm install && npm --prefix frontend install",
+    "dev": "concurrently \"npm run start:server\" \"npm run dev:frontend\"",
+    "app": "electron ."
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "multer": "^1.4.5-lts.1"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "electron": "^31.0.0"
+  }
+}
