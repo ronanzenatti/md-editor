@@ -270,7 +270,7 @@ export default function App() {
           
           {/* Panel 1: Repository Manager */}
           {panelVisible[0] && (
-            <div className="app-panel" style={{ width: `${panelWidths[0]}%` }}>
+            <div className="app-panel" style={{ flex: `${panelWidths[0]} 1 0%` }}>
               <div className="panel-header">
                 <span className="panel-title">{t('repo_manager')}</span>
               </div>
@@ -292,7 +292,7 @@ export default function App() {
 
           {/* Panel 2: Editor */}
           {panelVisible[1] && (
-            <div className="app-panel" style={{ width: `${panelWidths[1]}%` }}>
+            <div className="app-panel" style={{ flex: `${panelWidths[1]} 1 0%` }}>
               <div className="panel-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
                 <span className="panel-title" style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', marginRight: 10 }}>
                   {t('editor')}
@@ -335,7 +335,7 @@ export default function App() {
 
           {/* Panel 3: Live Preview */}
           {panelVisible[2] && (
-            <div className="app-panel" style={{ width: `${panelWidths[2]}%` }}>
+            <div className="app-panel" style={{ flex: `${panelWidths[2]} 1 0%` }}>
               <div className="panel-header">
                 <span className="panel-title">{t('preview')}</span>
               </div>

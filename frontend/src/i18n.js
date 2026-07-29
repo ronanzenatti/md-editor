@@ -99,7 +99,10 @@ export const translations = {
     'er_diag': 'Diagrama Entidade-Relacionamento (ER)',
     'gantt': 'Gráfico de Gantt',
     'pie': 'Gráfico de Pizza (Pie Chart)',
-    'git_graph': 'Gráfico Git (Git Graph)'
+    'git_graph': 'Gráfico Git (Git Graph)',
+    'search_emoji_placeholder': 'Pesquisar emoji...',
+    'emoji_picker_title': 'Emojis',
+    'no_emojis_found': 'Nenhum emoji encontrado'
   },
   'en': {
     // App header
@@ -201,6 +204,9 @@ export const translations = {
     'er_diag': 'Entity-Relationship Diagram (ER)',
     'gantt': 'Gantt Chart',
     'pie': 'Pie Chart',
-    'git_graph': 'Git Graph'
+    'git_graph': 'Git Graph',
+    'search_emoji_placeholder': 'Search emoji...',
+    'emoji_picker_title': 'Emojis',
+    'no_emojis_found': 'No emojis found'
   }
 };

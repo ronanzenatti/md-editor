@@ -4,9 +4,10 @@ import {
   Bold, Italic, Strikethrough, Heading1, Heading2, Heading3,
   List, ListOrdered, CheckSquare, Quote, Code, Terminal,
   Table as TableIcon, Link as LinkIcon, Image as ImageIcon, Video as VideoIcon,
-  Activity, Undo, Redo, Save, Upload, AlertCircle, X, Check, Plus, Trash2, Edit2
+  Smile, Activity, Undo, Redo, Save, Upload, AlertCircle, X, Check, Plus, Trash2, Edit2
 } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
+import EmojiPicker from './EmojiPicker';
 
 const API_BASE = window.location.origin.includes('localhost:5173') 
   ? 'http://localhost:3001' 
@@ -184,6 +185,9 @@ export default function EditorPane({ filePath, initialContent, onContentChange, 
   const [linkUploadFile, setLinkUploadFile] = useState(null);
   const [uploadingLinkFile, setUploadingLinkFile] = useState(false);
 
+  // Emoji picker popover state
+  const [showEmojiPicker, setShowEmojiPicker] = useState(false);
+
   // Refs
   const editorRef = useRef(null);
   const monacoRef = useRef(null);
@@ -323,6 +327,39 @@ export default function EditorPane({ filePath, initialContent, onContentChange, 
     setContent(newValue);
     onContentChange(newValue);
     triggerAutoSave(newValue);
+  };
+
+  // Insert emoji at cursor
+  const insertEmoji = (emoji) => {
+    const editor = editorRef.current;
+    const monaco = monacoRef.current;
+    if (!editor || !monaco) return;
+    
+    const selection = editor.getSelection();
+    const model = editor.getModel();
+    
+    const range = new monaco.Range(
+      selection.startLineNumber,
+      selection.startColumn,
+      selection.endLineNumber,
+      selection.endColumn
+    );
+    
+    const op = {
+      range: range,
+      text: emoji,
+      forceMoveMarkers: true
+    };
+    
+    editor.executeEdits("emoji-insert", [op]);
+    editor.focus();
+    
+    const newValue = model.getValue();
+    setContent(newValue);
+    onContentChange(newValue);
+    triggerAutoSave(newValue);
+    
+    setShowEmojiPicker(false);
   };
 
   // Media Insertion
@@ -981,6 +1018,26 @@ export default function EditorPane({ filePath, initialContent, onContentChange, 
     editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.KeyS, () => {
       handleManualSave();
     });
+
+    // Remeasure fonts once custom fonts (like Fira Code from Google Fonts) are loaded
+    if (typeof document !== 'undefined' && document.fonts) {
+      document.fonts.ready.then(() => {
+        monaco.editor.remeasureFonts();
+      });
+    }
+
+    // Fail-safe backups for delayed font application
+    setTimeout(() => {
+      if (monacoRef.current) monacoRef.current.editor.remeasureFonts();
+    }, 500);
+    setTimeout(() => {
+      if (monacoRef.current) monacoRef.current.editor.remeasureFonts();
+    }, 2000);
+
+    // Remeasure when the user focuses the editor text area as a live safeguard
+    editor.onDidFocusEditorText(() => {
+      if (monacoRef.current) monacoRef.current.editor.remeasureFonts();
+    });
   };
 
   const handleUndo = () => {
@@ -1035,6 +1092,23 @@ export default function EditorPane({ filePath, initialContent, onContentChange, 
         <button className="toolbar-btn" title={t('insert_table')} onClick={() => { setEditRange(null); setShowTableModal(true); }}><TableIcon size={16} /></button>
         <button className="toolbar-btn" title={t('insert_link')} onClick={openLinkModal}><LinkIcon size={16} /></button>
         
+        {/* Emoji Button and Popover */}
+        <div style={{ position: 'relative' }}>
+          <button 
+            className={`toolbar-btn ${showEmojiPicker ? 'active' : ''}`} 
+            title={t('emoji_picker_title') || 'Emojis'} 
+            onClick={() => setShowEmojiPicker(!showEmojiPicker)}
+          >
+            <Smile size={16} />
+          </button>
+          {showEmojiPicker && (
+            <EmojiPicker 
+              onSelect={insertEmoji} 
+              onClose={() => setShowEmojiPicker(false)} 
+            />
+          )}
+        </div>
+        
         <div className="toolbar-divider"></div>
 
         <button 
@@ -1084,38 +1158,40 @@ export default function EditorPane({ filePath, initialContent, onContentChange, 
         className="editor-textarea-wrapper" 
         style={{ 
           flex: 1,
-          height: '100%',
-          width: '100%',
-          overflow: 'hidden',
-          position: 'relative'
+          minHeight: 0,
+          position: 'relative',
+          overflow: 'hidden'
         }}
       >
-        <MonacoEditor
-          height="100%"
-          width="100%"
-          language="markdown"
-          theme={selectedTheme}
-          value={content}
-          onChange={(val) => {
-            const newVal = val || '';
-            setContent(newVal);
-            onContentChange(newVal);
-            triggerAutoSave(newVal);
-          }}
-          onMount={handleEditorDidMount}
-          beforeMount={handleEditorWillMount}
-          options={{
-            minimap: { enabled: false },
-            lineNumbers: 'on',
-            scrollBeyondLastLine: false,
-            automaticLayout: true,
-            fontSize: 14,
-            fontFamily: "'Fira Code', source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace",
-            renderLineHighlight: 'all',
-            wordWrap: 'on',
-            scrollbar: { vertical: 'auto', horizontal: 'auto' }
-          }}
-        />
+        <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }}>
+          <MonacoEditor
+            height="100%"
+            width="100%"
+            language="markdown"
+            theme={selectedTheme}
+            value={content}
+            onChange={(val) => {
+              const newVal = val || '';
+              setContent(newVal);
+              onContentChange(newVal);
+              triggerAutoSave(newVal);
+            }}
+            onMount={handleEditorDidMount}
+            beforeMount={handleEditorWillMount}
+            options={{
+              minimap: { enabled: false },
+              lineNumbers: 'on',
+              scrollBeyondLastLine: false,
+              automaticLayout: true,
+              fontSize: 14,
+              fontFamily: "'Fira Code', source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace",
+              fontLigatures: false,
+              renderLineHighlight: 'all',
+              wordWrap: 'on',
+              scrollbar: { vertical: 'auto', horizontal: 'auto' }
+            }}
+          />
+        </div>
       </div>
 
       {/* Status Bar */}
