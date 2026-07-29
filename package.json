@@ -11,7 +11,8 @@
     "build:frontend": "npm --prefix frontend run build",
     "install:all": "npm install && npm --prefix frontend install",
     "dev": "concurrently \"npm run start:server\" \"npm run dev:frontend\"",
-    "app": "electron ."
+    "app": "electron .",
+    "dist:electron": "npm run build:frontend && npx @electron/packager . MD-Editor --platform=win32 --arch=x64 --out=dist-app --overwrite"
   },
   "dependencies": {
     "cors": "^2.8.5",
@@ -19,7 +20,34 @@
     "multer": "^1.4.5-lts.1"
   },
   "devDependencies": {
+    "@electron/packager": "^18.3.6",
     "concurrently": "^8.2.2",
     "electron": "^31.0.0"
+  },
+  "build": {
+    "appId": "com.mdeditor.app",
+    "productName": "MD-Editor",
+    "directories": {
+      "output": "dist-electron"
+    },
+    "files": [
+      "electron/**/*",
+      "server/**/*",
+      "frontend/dist/**/*",
+      "package.json"
+    ],
+    "win": {
+      "target": [
+        "nsis",
+        "portable"
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "MD-Editor"
+    }
   }
 }

@@ -4,3 +4,5 @@ dist/
 frontend/dist/
 .DS_Store
 *.log
+dist-app/
+dist-electron/
