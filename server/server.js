@@ -572,7 +572,7 @@ app.post('/api/upload', upload.single('file'), (req, res) => {
 });
 
 // Serve frontend html in fallback
-app.get('*', (req, res) => {
+app.get('{*splat}', (req, res) => {
   if (existsSync(path.join(frontendDistPath, 'index.html'))) {
     res.sendFile(path.join(frontendDistPath, 'index.html'));
   } else {
