@@ -12,7 +12,7 @@
     "install:all": "npm install && npm --prefix frontend install",
     "dev": "concurrently \"npm run start:server\" \"npm run dev:frontend\"",
     "app": "electron .",
-    "dist:electron": "npm run build:frontend && npx @electron/packager . MD-Editor --platform=win32 --arch=x64 --out=dist-app --icon=assets/icon.ico --overwrite"
+    "dist:electron": "npm run build:frontend && npx electron-packager . MD-Editor --platform=win32 --arch=x64 --out=dist-app --icon=assets/icon.ico --overwrite"
   },
   "dependencies": {
     "cors": "^2.8.5",
@@ -20,7 +20,7 @@
     "multer": "^1.4.5-lts.1"
   },
   "devDependencies": {
-    "@electron/packager": "^18.3.6",
+    "@electron/packager": "^18.4.4",
     "concurrently": "^8.2.2",
     "electron": "^31.0.0"
   },
