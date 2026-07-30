@@ -12,7 +12,7 @@
     "install:all": "npm install && npm --prefix frontend install",
     "dev": "concurrently \"npm run start:server\" \"npm run dev:frontend\"",
     "app": "electron .",
-    "dist:electron": "npm run build:frontend && npx electron-packager . MD-Editor --platform=win32 --arch=x64 --out=dist-app --icon=assets/icon.ico --overwrite"
+    "dist:electron": "npm run build:frontend && npx electron-packager . MD-Editor --platform=win32 --arch=x64 --out=dist-app --icon=assets/icon.ico --overwrite --ignore=\"^/(frontend/(src|node_modules|public)|dist-app|\\.git|\\.github)\""
   },
   "dependencies": {
     "cors": "^2.8.5",
