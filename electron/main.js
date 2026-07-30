@@ -15,6 +15,7 @@ function createWindow() {
     minWidth: 800,
     minHeight: 600,
     title: 'MD-Editor',
+    icon: path.join(__dirname, '..', 'assets', 'icon.ico'),
     webPreferences: {
       preload: path.join(__dirname, 'preload.cjs'),
       contextIsolation: true,

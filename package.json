@@ -12,7 +12,7 @@
     "install:all": "npm install && npm --prefix frontend install",
     "dev": "concurrently \"npm run start:server\" \"npm run dev:frontend\"",
     "app": "electron .",
-    "dist:electron": "npm run build:frontend && npx @electron/packager . MD-Editor --platform=win32 --arch=x64 --out=dist-app --overwrite"
+    "dist:electron": "npm run build:frontend && npx @electron/packager . MD-Editor --platform=win32 --arch=x64 --out=dist-app --icon=assets/icon.ico --overwrite"
   },
   "dependencies": {
     "cors": "^2.8.5",
@@ -27,6 +27,7 @@
   "build": {
     "appId": "com.mdeditor.app",
     "productName": "MD-Editor",
+    "icon": "assets/icon.ico",
     "directories": {
       "output": "dist-electron"
     },
